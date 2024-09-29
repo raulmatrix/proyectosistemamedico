@@ -1,3 +1,41 @@
+<?php 
+include 'ConexionBD.php';
+
+$conexionBD = new ConexionBD();
+$conexionBD->conectar();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  // Obtenemos los valores enviados por el formulario
+  $usuario = $_POST['usuario'];
+  $password = $_POST['password'];
+
+  $sql = "select idUsuario,usuario,password,nombre,apellidoPat from usuario where usuario='$usuario' and password='$password'";
+  $resultado = $conexionBD->datos($sql);
+
+ if($resultado->num_rows>0){
+
+  /*datos de socio*/
+  $fila = mysqli_fetch_assoc($resultado);
+  $idUsuario = $fila['idUsuario'];
+  $nombre = $fila['nombre'];
+  $apellidoPat = $fila['apellidoPat'];
+      header("Location: principal.php"); // Ejemplo de redirección
+      exit();
+  } else {
+
+  ?>  
+    <div class="alert alert-warning">
+    <strong>Advertencia!</strong> El usuario o password que ingreso no es el correcto
+    </div>
+
+<?php
+  }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +62,9 @@
     <div class="card-body login-card-body">
       
 
-      <form action="principal.html" method="post">
+      <form action="login.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Usuario" required>
+          <input type="text" class="form-control" name="usuario" placeholder="Usuario" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -34,7 +72,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Contraseña" required>
+          <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
