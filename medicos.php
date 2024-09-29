@@ -31,27 +31,57 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-           
-            <!--/.direct-chat -->
+          <div class="col-md-3">
+            
+          </div>
+          <div class="col-md-6">
+            <!-- <h1>Registro Medicos</h1> -->
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text"
+                  class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre Medico">
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                  <label for="">Apellido Paterno</label>
+                  <input type="text"
+                    class="form-control" name="apePat" id="apePat" aria-describedby="helpId" placeholder="Apellido Paterno">
+                  
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                  <label for="">Apellido Materno</label>
+                  <input type="text"
+                    class="form-control" name="apeMat" id="apeMat" aria-describedby="helpId" placeholder="Apellido Materno">
+                  
+                  </div>
+                </div>
+              
+              
+              </div>
 
-           
-            <!-- /.card -->
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
+              <div class="form-group">
+                <label for="">Especialidad</label>
+                <select class="form-control" name="" id="">
+                  <option>Oftalmologia</option>
+                  <option>Pediatria</option>
+                  <option>Traumatologia</option>
+                </select>
+              </div>
 
-          
 
-           
-            <!-- /.card -->
+              <button type="submit" class="btn btn-primary">Registrar</button>
 
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
+            </form>
+
+          </div>
+          <div class="col-md-3">
+            
+          </div>
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  if($resultado->num_rows>0){
 
   /*datos de socio*/
-  $fila = mysqli_fetch_assoc($resultado);
+  $fila = mysqli_fetch_assoc($resultado); //array asociativo
   $idUsuario = $fila['idUsuario'];
   $nombre = $fila['nombre'];
   $apellidoPat = $fila['apellidoPat'];
