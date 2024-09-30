@@ -1,3 +1,12 @@
+
+<?php 
+include 'ConexionBD.php';
+
+$conexionBD = new ConexionBD();
+$conexionBD->conectar();
+
+?>
+
 <?php  
   include 'header.php';
   include 'sidebarmenu.php';
@@ -35,8 +44,37 @@
             
           </div>
           <div class="col-md-6">
+
+          <?php
+
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                // Obtenemos los valores enviados por el formulario
+                $nombre = $_POST['nombre'];
+                $apellidoPat = $_POST['apePat'];
+                $apellidoMat = $_POST['apeMat'];
+                $usuario = $_POST['usuario'];
+                $password = $_POST['password'];
+                $rol = $_POST['rol'];
+                $nroAseg = $_POST['nroAseg'];
+
+                $sql = "INSERT INTO usuario (idUsuario, usuario, password, nombre, apellidoPat, apellidoMat, rol, nroAsegurado, estado) VALUES (NULL, '$usuario', '$password', '$nombre', '$apellidoPat', '$apellidoMat', '$rol', '$nroAseg', 'activo')";
+                $resultado = $conexionBD->datos($sql);
+
+                ?>  
+                <div class="success alert-success">
+                <strong>Advertencia!</strong> El usuario se registro de manera exitosa
+                </div>
+
+                <?php
+
+                }
+
+                ?>
+
+
             <!-- <h1>Registro Medicos</h1> -->
-            <form action="" method="post">
+            <form action="usuarios.php" method="post">
                 <div class="form-group">
                     <label for="">Nombre</label>
                     <input type="text"
@@ -66,7 +104,7 @@
                         <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text"
-                            class="form-control" name="apePat" id="apePat" aria-describedby="helpId" placeholder="Apellido Paterno">
+                            class="form-control" name="usuario" id="usuario" aria-describedby="helpId" placeholder="Apellido Paterno">
                         </div>
                     </div>
                     
@@ -74,7 +112,7 @@
                         <div class="form-group">
                         <label for="">Password</label>
                         <input type="text"
-                            class="form-control" name="apeMat" id="apeMat" aria-describedby="helpId" placeholder="Apellido Materno">
+                            class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Apellido Materno">
                         </div>
                     </div>
                 </div>
@@ -84,7 +122,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Rol</label>
-                          <select class="form-control" name="" id="">
+                          <select class="form-control" name="rol" id="rol">
                             <option value="administrador">Administrador</option>
                             <option value="paciente">Paciente</option>
                             <option></option>
@@ -107,7 +145,7 @@
               
 
 
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <button type="submit" class="btn btn-primary col-12">Registrar</button>
 
             </form>
 
