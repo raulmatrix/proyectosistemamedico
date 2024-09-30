@@ -48,18 +48,18 @@
           </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Medicos
+                Usuarios
                 
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+            <i class="nav-icon fas fa-stethoscope"></i>
               <p>
-                Especialidades
+              Medicos
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
@@ -119,7 +119,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Horarios
+                Reservas
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
