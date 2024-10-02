@@ -1,8 +1,12 @@
 <?php 
+
+session_start();
 include 'ConexionBD.php';
 
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
+
+/**************/
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -13,15 +17,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sql = "select idUsuario,usuario,password,nombre,apellidoPat from usuario where usuario='$usuario' and password='$password'";
   $resultado = $conexionBD->datos($sql);
 
+  $fila = mysqli_fetch_assoc($resultado);
+    echo $_SESSION['nombre'] = $fila['nombre'];
+    echo $_SESSION['apellidoPat'] = $fila['apellidoPat'];
+  
+
+  
+
  if($resultado->num_rows>0){
 
-  /*datos de socio*/
+  /*datos de usuario*/
   $fila = mysqli_fetch_assoc($resultado); //array asociativo
-  $idUsuario = $fila['idUsuario'];
+  /*$idUsuario = $fila['idUsuario'];
   $nombre = $fila['nombre'];
-  $apellidoPat = $fila['apellidoPat'];
+  $apellidoPat = $fila['apellidoPat'];*/
       header("Location: principal.php"); // Ejemplo de redirección
-      exit();
+      exit(); //salir flujo
   } else {
 
   ?>  

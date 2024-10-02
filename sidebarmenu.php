@@ -15,7 +15,7 @@
           <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Raul Vera</a>
+          <a href="#" class="d-block"><?php echo $_SESSION['nombre']." ".$_SESSION['apellidoPat']." session"?></a>
         </div>
       </div>
 
@@ -47,13 +47,28 @@
             
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Usuarios
-                
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="usuarios.php" class="nav-link">
+                  <i class="far fa-circle"></i>
+                  <p>Agregar Usuario</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listausuarios.php" class="nav-link">
+                  <i class="far fa-circle"></i>
+                  <p>Lista Usuarios</p>
+                </a>
+              </li>
+              
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

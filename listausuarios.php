@@ -1,10 +1,12 @@
-
 <?php 
 include 'ConexionBD.php';
 
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
 
+$sql = "select idUsuario,usuario,password,nombre,apellidoPat,apellidoMat,rol,nroAsegurado from usuario";
+$resultado = $conexionBD->datos($sql);
+//print($resultado);
 ?>
 
 <?php  
@@ -40,14 +42,68 @@ $conexionBD->conectar();
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-1">
             
           </div>
-          <div class="col-md-6">
+          <div class="col-md-10">
+                  
+            <div class="card">
+              <div class="card-header">
+                
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="registro" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Rol</th>
+                    <th>Nro Asegurado</th>
+                    
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <?php
 
+                        
+                        while($fila = mysqli_fetch_assoc($resultado)){
+                            
+                            echo "<tr>";
+                                $idUsuario = $fila['idUsuario'];
+                                
+                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['apellidoPat']."</td>";
+                                echo "<td>".$fila['apellidoMat']."</td>";
+                                echo "<td>".$fila['rol']."</td>";
+                                echo "<td>".$fila['nroAsegurado']."</td>";
+                                //echo "<td>".$fila['telefono']."</td>";
+
+                                echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idUsuario)'><i class='fas fa-edit'></i></button></td>";
+                            
+                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete' onClick='deleteReg($idUsuario)'><i class='fas fa-trash'></i></button></td>";
+                            echo "</tr>";
+                        }
+                      ?>
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Rol</th>
+                    <th>Telefono</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
           
           </div>
-          <div class="col-md-3">
+          <div class="col-md-1">
             
           </div>
         </div>

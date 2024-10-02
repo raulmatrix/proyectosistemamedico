@@ -1,4 +1,14 @@
   <?php  
+
+  //inicializar sesion
+  session_start();
+
+  include 'ConexionBD.php';
+
+  $conexionBD = new ConexionBD();
+  $conexionBD->conectar();
+
+
   include 'header.php';
   include 'sidebarmenu.php';
   ?>

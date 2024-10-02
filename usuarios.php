@@ -46,7 +46,7 @@ $conexionBD->conectar();
           <div class="col-md-6">
 
           <?php
-
+/*datos enviados desde formulario para registro*/
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Obtenemos los valores enviados por el formulario
@@ -59,11 +59,11 @@ $conexionBD->conectar();
                 $nroAseg = $_POST['nroAseg'];
 
                 $sql = "INSERT INTO usuario (idUsuario, usuario, password, nombre, apellidoPat, apellidoMat, rol, nroAsegurado, estado) VALUES (NULL, '$usuario', '$password', '$nombre', '$apellidoPat', '$apellidoMat', '$rol', '$nroAseg', 'activo')";
-                $resultado = $conexionBD->datos($sql);
+                $conexionBD->datos($sql);
 
                 ?>  
                 <div class="success alert-success">
-                <strong>Advertencia!</strong> El usuario se registro de manera exitosa
+                <strong>Mensaje!</strong> El usuario se registro de manera exitosa
                 </div>
 
                 <?php
@@ -78,7 +78,7 @@ $conexionBD->conectar();
                 <div class="form-group">
                     <label for="">Nombre</label>
                     <input type="text"
-                    class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre Medico">
+                    class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre Usuario">
                     
                 </div>
                 <div class="row">   
@@ -104,7 +104,7 @@ $conexionBD->conectar();
                         <div class="form-group">
                         <label for="usuario">Usuario</label>
                         <input type="text"
-                            class="form-control" name="usuario" id="usuario" aria-describedby="helpId" placeholder="Apellido Paterno">
+                            class="form-control" name="usuario" id="usuario" aria-describedby="helpId" placeholder="Usuario">
                         </div>
                     </div>
                     
@@ -112,7 +112,7 @@ $conexionBD->conectar();
                         <div class="form-group">
                         <label for="">Password</label>
                         <input type="text"
-                            class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Apellido Materno">
+                            class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Contraseña">
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ $conexionBD->conectar();
                         <div class="form-group">
                           <label for="">Nro Asegurado</label>
                           <input type="text"
-                            class="form-control" name="nroAseg" id="nroAseg" aria-describedby="helpId" placeholder="">
+                            class="form-control" name="nroAseg" id="nroAseg" aria-describedby="helpId" placeholder="Numero asegurado">
                           
                         </div>
                     </div>
