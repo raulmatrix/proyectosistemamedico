@@ -1,5 +1,5 @@
 function actualizarReg(idUsu){
-    alert("update");
+    
 
     let idusu = idUsu;
 

@@ -5,9 +5,63 @@ include 'ConexionBD.php';
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
 
+/*proceso de actualizacion del registro de usuario desde el modal */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  // Obtenemos los valores enviados por el formulario
+  $idUsuario = $_POST['identificador'];
+  $nombre = $_POST['nombre'];
+  $apellidoPat = $_POST['apePat'];
+  $apellidoMat = $_POST['apeMat'];
+  $usuario = $_POST['usuario'];
+  $password = $_POST['password'];
+  $rol = $_POST['rol'];
+  $nroAseg = $_POST['nroAseg'];
+
+  $sql = "UPDATE usuario SET usuario='$usuario', password='$password', nombre='$nombre', 
+  apellidoPat='$apellidoPat', apellidoMat='$apellidoMat', 
+  rol='$rol', nroAsegurado='$nroAseg' WHERE idUsuario='$idUsuario'";
+  $conexionBD->datos($sql);
+
+  ?>  
+
+
+<script>
+    $("#modelId").show();
+  </script>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          Body para cerrar
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+ 
+
+  <?php
+
+}
+
+
 $sql = "select idUsuario,usuario,password,nombre,apellidoPat,apellidoMat,rol,nroAsegurado from usuario";
 $resultado = $conexionBD->datos($sql);
-//print($resultado);
+
 ?>
 
 <?php  
