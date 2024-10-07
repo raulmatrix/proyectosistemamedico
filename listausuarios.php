@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include 'ConexionBD.php';
 
 $conexionBD = new ConexionBD();
@@ -104,6 +105,32 @@ $resultado = $conexionBD->datos($sql);
           
           </div>
           <div class="col-md-1">
+
+                       
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Actualizacion Datos Usuario</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div id="contenidoModalUpdate">
+                                  <div class="modal-body">
+                                    Body cargando...
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                  </div>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
             
           </div>
         </div>

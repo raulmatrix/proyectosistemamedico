@@ -66,6 +66,8 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assets/dist/js/pages/dashboard.js"></script>
 
+<script src="assets/js/crudUsuario.js"></script>
+
 <script>
   $(function () {
     $("#registro").DataTable({

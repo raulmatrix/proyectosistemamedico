@@ -1,5 +1,6 @@
 
 <?php 
+session_start();
 include 'ConexionBD.php';
 
 $conexionBD = new ConexionBD();
@@ -8,6 +9,7 @@ $conexionBD->conectar();
 ?>
 
 <?php  
+  
   include 'header.php';
   include 'sidebarmenu.php';
   ?>

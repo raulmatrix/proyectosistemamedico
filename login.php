@@ -18,14 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $resultado = $conexionBD->datos($sql);
 
   $fila = mysqli_fetch_assoc($resultado);
-    echo $_SESSION['nombre'] = $fila['nombre'];
-    echo $_SESSION['apellidoPat'] = $fila['apellidoPat'];
+   
   
 
   
 
  if($resultado->num_rows>0){
-
+  echo $_SESSION['nombre'] = $fila['nombre'];
+  echo $_SESSION['apellidoPat'] = $fila['apellidoPat'];
   /*datos de usuario*/
   $fila = mysqli_fetch_assoc($resultado); //array asociativo
   /*$idUsuario = $fila['idUsuario'];
