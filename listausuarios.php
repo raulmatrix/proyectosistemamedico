@@ -4,10 +4,14 @@ include 'ConexionBD.php';
 
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
+?>
 
-/*proceso de actualizacion del registro de usuario desde el modal */
+
+<?php 
+
+/* Proceso de actualización del registro de usuario */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+  
   // Obtenemos los valores enviados por el formulario
   $idUsuario = $_POST['identificador'];
   $nombre = $_POST['nombre'];
@@ -18,57 +22,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $rol = $_POST['rol'];
   $nroAseg = $_POST['nroAseg'];
 
+  // Actualización en la base de datos
   $sql = "UPDATE usuario SET usuario='$usuario', password='$password', nombre='$nombre', 
   apellidoPat='$apellidoPat', apellidoMat='$apellidoMat', 
   rol='$rol', nroAsegurado='$nroAseg' WHERE idUsuario='$idUsuario'";
+  
   $conexionBD->datos($sql);
-
-  ?>  
-
-
-<script>
-    $("#modelId").show();
-  </script>
+    // Si la actualización es exitosa, mostrar el modal
+    
   
-  <!-- Modal -->
-  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-          Body para cerrar
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
- 
- 
-
-  <?php
-
 }
+?>
 
 
-$sql = "select idUsuario,usuario,password,nombre,apellidoPat,apellidoMat,rol,nroAsegurado from usuario";
-$resultado = $conexionBD->datos($sql);
+<?php
+
+$sql1 = "select idUsuario,usuario,password,nombre,apellidoPat,apellidoMat,rol,nroAsegurado from usuario";
+$resultado = $conexionBD->datos($sql1);
 
 ?>
 
 <?php  
   include 'header.php';
   include 'sidebarmenu.php';
-  ?>
-  
+
+
+?>
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -108,6 +89,7 @@ $resultado = $conexionBD->datos($sql);
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+
                 <table id="registro" class="table table-bordered table-striped">
                   <thead>
                   <tr>
