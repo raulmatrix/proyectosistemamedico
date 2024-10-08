@@ -113,7 +113,7 @@ $conexionBD->conectar();
                     <div class="col-md-6">
                         <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text"
+                        <input type="password"
                             class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="Contraseña">
                         </div>
                     </div>
