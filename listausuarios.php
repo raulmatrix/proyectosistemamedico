@@ -119,7 +119,7 @@ $resultado = $conexionBD->datos($sql1);
 
                                 echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idUsuario)'><i class='fas fa-edit'></i></button></td>";
                             
-                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete' onClick='deleteReg($idUsuario)'><i class='fas fa-trash'></i></button></td>";
+                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminar' onClick='eliminarReg($idUsuario)'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                       ?>
@@ -167,6 +167,13 @@ $resultado = $conexionBD->datos($sql1);
                             </div>
                           </div>
                         </div>
+
+
+
+                        <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#eliminar">
+    Launch
+  </button>
             
           </div>
         </div>
@@ -177,6 +184,28 @@ $resultado = $conexionBD->datos($sql1);
   </div>
   <!-- /.content-wrapper -->
   
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar Registro Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          Esta seguro de eliminar este registro?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <?php  
   include 'footer.php';
