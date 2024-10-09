@@ -12,7 +12,7 @@ function actualizarReg(idUsu){
 
 
 function eliminar(usu){
-  alert("Usuario: " + usu)
+  //alert("Usuario: " + usu)
   let usuario = usu;
   $.post("deleteUsuario.php", {idusu: usuario}, function(result){
     window.location.href = "http://localhost:9191/sistemamedico/listausuarios.php";

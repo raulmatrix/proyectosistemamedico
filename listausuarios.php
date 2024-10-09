@@ -119,7 +119,7 @@ $resultado = $conexionBD->datos($sql1);
 
                                 echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idUsuario)'><i class='fas fa-edit'></i></button></td>";
                             
-                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminar' onClick='eliminar($idUsuario)'><i class='fas fa-trash'></i></button></td>";
+                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminar' onClick='eliminar1($idUsuario)'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                       ?>
