@@ -8,6 +8,7 @@ $conexionBD->conectar();
 $usuario = $_POST['usuario'];
 $password = $_POST['password'];
 
+
 $sentencia = $conexionBD->conexion->prepare("SELECT * FROM usuario WHERE usuario=? AND password=?");
 $sentencia->bind_param('ss', $usuario, $password);
 $sentencia->execute();

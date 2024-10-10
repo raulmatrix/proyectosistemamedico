@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $usuario = $_POST['usuario'];
   $password = $_POST['password'];
 
-  $sql = "select idUsuario,usuario,password,nombre,apellidoPat from usuario where usuario='$usuario' and password='$password'";
+  $sql = "select idUsuario,usuario,password,nombre,apellidoPat,rol from usuario where usuario='$usuario' and password='$password' and rol='administrador'";
   $resultado = $conexionBD->datos($sql);
 
   $fila = mysqli_fetch_assoc($resultado);
@@ -23,21 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   
 
- if($resultado->num_rows>0){
-  echo $_SESSION['nombre'] = $fila['nombre'];
-  echo $_SESSION['apellidoPat'] = $fila['apellidoPat'];
-  /*datos de usuario*/
-  $fila = mysqli_fetch_assoc($resultado); //array asociativo
-  /*$idUsuario = $fila['idUsuario'];
-  $nombre = $fila['nombre'];
-  $apellidoPat = $fila['apellidoPat'];*/
-      header("Location: principal.php"); // Ejemplo de redirección
-      exit(); //salir flujo
-  } else {
+  if($resultado->num_rows>0){
+
+      $_SESSION['nombre'] = $fila['nombre'];
+      $_SESSION['apellidoPat'] = $fila['apellidoPat'];
+     
+          header("Location: principal.php"); // Ejemplo de redirección
+          exit(); //salir flujo
+    
+    
+  }
+  
+    else {
 
   ?>  
     <div class="alert alert-warning">
-    <strong>Advertencia!</strong> El usuario o password que ingreso no es el correcto
+    <strong>Advertencia!</strong> El usuario o password que ingreso no es el correcto, <br> ademas revisar si tiene permisos de administrador
     </div>
 
 <?php
