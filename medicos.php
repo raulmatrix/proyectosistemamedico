@@ -1,6 +1,12 @@
-<?php  
-  include 'header.php';
-  include 'sidebarmenu.php';
+<?php
+ session_start();
+ include 'ConexionBD.php';
+ 
+ $conexionBD = new ConexionBD();
+ $conexionBD->conectar();
+
+ include 'header.php';
+ include 'sidebarmenu.php';
   ?>
   
   <!-- Content Wrapper. Contains page content -->
@@ -35,8 +41,33 @@
             
           </div>
           <div class="col-md-6">
+        <?php
+          /*datos enviados desde formulario para registro*/
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Obtenemos los valores enviados por el formulario
+                $nombre = $_POST['nombre'];
+                $apellidoPat = $_POST['apePat'];
+                $apellidoMat = $_POST['apeMat'];
+                $especialidad = $_POST['especialidad'];
+              
+
+                $sql = "INSERT INTO medico (idMedico, nombreMed, apellidoPat, apellidoMat, especialidad, estado) 
+                VALUES (NULL, '$nombre', '$apellidoPat', '$apellidoMat', '$especialidad', 'activo')";
+                $conexionBD->datos($sql);
+
+                ?>  
+                <div class="success alert-success">
+                <strong>Mensaje!</strong> El medico se registro de manera exitosa
+                </div>
+
+                <?php
+
+                }
+
+                ?>
+
             <!-- <h1>Registro Medicos</h1> -->
-            <form action="" method="post">
+            <form action="medicos.php" method="post">
               <div class="form-group">
                 <label for="">Nombre</label>
                 <input type="text"
@@ -65,16 +96,18 @@
               </div>
 
               <div class="form-group">
-                <label for="">Especialidad</label>
-                <select class="form-control" name="" id="">
+                <label for="especialidad">Especialidad</label>
+                <select class="form-control" name="especialidad" id="especialidad">
                   <option>Oftalmologia</option>
                   <option>Pediatria</option>
                   <option>Traumatologia</option>
+                  <option>Medico General</option>
+                  <option>Ginecologia</option>
                 </select>
               </div>
 
 
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <button type="submit" class="btn btn-primary col-12">Registrar</button>
 
             </form>
 

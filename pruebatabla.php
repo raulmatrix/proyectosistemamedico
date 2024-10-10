@@ -62,7 +62,20 @@ $conexionBD->conectar();
                   </tr>
                   </thead>
                   <tbody>
-                    
+                    <tr>
+                      <td>aa</td>
+                      <td>bb</td>
+                      <td>cc</td>
+                      <td>dd</td>
+                      <td>ee</td>
+                    </tr>
+                    <tr>
+                      <td>ff</td>
+                      <td>gg</td>
+                      <td>hh</td>
+                      <td>ii</td>
+                      <td>jj</td>
+                    </tr>
                   </tbody>
                   <tfoot>
                   <tr>

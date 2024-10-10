@@ -5,30 +5,7 @@ include 'ConexionBD.php';
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
 
-
-/* Proceso de actualización del registro de usuario */
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  
-  // Obtenemos los valores enviados por el formulario
-  $idUsuario = $_POST['identificador'];
-  $nombre = $_POST['nombre'];
-  $apellidoPat = $_POST['apePat'];
-  $apellidoMat = $_POST['apeMat'];
-  $usuario = $_POST['usuario'];
-  $password = $_POST['password'];
-  $rol = $_POST['rol'];
-  $nroAseg = $_POST['nroAseg'];
-
-  // Actualización en la base de datos
-  $sql = "UPDATE usuario SET usuario='$usuario', password='$password', nombre='$nombre', 
-  apellidoPat='$apellidoPat', apellidoMat='$apellidoMat', 
-  rol='$rol', nroAsegurado='$nroAseg' WHERE idUsuario='$idUsuario'";
-  
-  $conexionBD->datos($sql);
-    // Si la actualización es exitosa, mostrar el modal
-    
-}
-$sql1 = "select idUsuario,usuario,password,nombre,apellidoPat,apellidoMat,rol,nroAsegurado from usuario where estado = 'activo'";
+$sql1 = "select idMedico, nombreMed, apellidoPat, apellidoMat, especialidad, estado from medico where estado = 'activo'";
 $resultado = $conexionBD->datos($sql1);
 
   include 'header.php';
@@ -45,7 +22,7 @@ $resultado = $conexionBD->datos($sql1);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Lista Usuarios</h1>
+            <h1 class="m-0">Lista Medicos</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -78,14 +55,14 @@ $resultado = $conexionBD->datos($sql1);
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="registro" class="table table-bordered table-striped">
+                <table id="tabla_medicos" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Nombre</th>
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
-                    <th>Rol</th>
-                    <th>Nro Asegurado</th>
+                    <th>Especialidad</th>
+                    
                     
                   </tr>
                   </thead>
@@ -96,18 +73,16 @@ $resultado = $conexionBD->datos($sql1);
                         while($fila = mysqli_fetch_assoc($resultado)){
                             
                             echo "<tr>";
-                                $idUsuario = $fila['idUsuario'];
+                                $idMedico = $fila['idMedico'];
                                 
-                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['nombreMed']."</td>";
                                 echo "<td>".$fila['apellidoPat']."</td>";
                                 echo "<td>".$fila['apellidoMat']."</td>";
-                                echo "<td>".$fila['rol']."</td>";
-                                echo "<td>".$fila['nroAsegurado']."</td>";
-                                //echo "<td>".$fila['telefono']."</td>";
-
-                                echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idUsuario)'><i class='fas fa-edit'></i></button></td>";
+                                echo "<td>".$fila['especialidad']."</td>";
+                               
+                                echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idMedico)'><i class='fas fa-edit'></i></button></td>";
                             
-                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminar' onClick='eliminar($idUsuario)'><i class='fas fa-trash'></i></button></td>";
+                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminar' onClick='eliminar($idMedico)'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                       ?>
@@ -161,6 +136,7 @@ $resultado = $conexionBD->datos($sql1);
           </div>
         </div>
         <!-- /.row (main row) -->
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
