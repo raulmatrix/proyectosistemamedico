@@ -26,12 +26,7 @@
   <link rel="stylesheet" href="assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
+
  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -78,7 +78,7 @@ $resultado = $conexionBD->datos($sql1);
               <!-- /.card-header -->
               <div class="card-body">
 
-                <table id="registro" class="table table-bordered table-striped">
+                <table id="tabla_usuarios" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Nombre</th>
