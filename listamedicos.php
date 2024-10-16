@@ -5,6 +5,26 @@ include 'ConexionBD.php';
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();
 
+/* Proceso de actualización del registro de usuario */
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+  
+  // Obtenemos los valores enviados por el formulario
+  $idMed = $_POST['idMedico'];
+  $nombre = $_POST['nombre'];
+  $apellidoPat = $_POST['apePat'];
+  $apellidoMat = $_POST['apeMat'];
+  $especialidad = $_POST['especialidad'];
+  
+
+  // Actualización en la base de datos
+  $sql = "UPDATE medico SET nombreMed='$nombre', apellidoPat='$apellidoPat', 
+  apellidoMat='$apellidoMat', especialidad='$especialidad' WHERE idMedico='$idMed'";
+  
+  $conexionBD->datos($sql);
+    // Si la actualización es exitosa, mostrar el modal
+    
+}
+
 // Consulta para obtener la lista de médicos
 $sql2 = "SELECT idMedico, nombreMed, apellidoPat, apellidoMat, especialidad FROM medico WHERE estado = 'activo'";
 $resultado = $conexionBD->datos($sql2);
@@ -62,13 +82,13 @@ include 'sidebarmenu.php';
                                 echo "<td>".$fila['apellidoPat']."</td>";
                                 echo "<td>".$fila['apellidoMat']."</td>";
                                 echo "<td>".$fila['especialidad']."</td>";
-                                echo "<button onClick='actualizarMed(2);'>Prueba</button>";
+                                
 
                                 // Botones para editar y eliminar
                                 echo "<td>";
                                   echo "<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarMed($idMedico)'><i class='fas fa-edit'></i></button>";
                                   echo " ";
-                                  echo "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminarMed' onClick='eliminarMed($idMedico)'><i class='fas fa-trash'></i></button>";
+                                  echo "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminarMed' onClick='quitarMed($idMedico)'><i class='fas fa-trash'></i></button>";
                                 echo "</td>";
 
                                 
@@ -138,11 +158,11 @@ include 'sidebarmenu.php';
           </button>
         </div>
         <div class="modal-body">
-          ¿Está seguro de eliminar este registro?
+          ¿Está seguro de eliminar al registro de medico?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger" onClick="eliminarMed(<?php echo $idMedico; ?>);">Eliminar</button>
+          <button type="button" class="btn btn-danger" onClick="quitarMed(<?php echo $idMedico; ?>);">Eliminar</button>
         </div>
       </div>
     </div>

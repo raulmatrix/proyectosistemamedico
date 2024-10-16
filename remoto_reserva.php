@@ -8,18 +8,20 @@ $conexionBD->conectar();
 $idUsuario = $_POST['idUsuario'];
 $idMedico = $_POST['idMedico'];
 $horario = $_POST['horario']; // Asegúrate que esto es el idHorarios
-$fecha = $_POST['fecha'];
-$estado = $_POST['estado'];
+//$fecha = $_POST['fechaActual'];
+$fechaActual = date("Y-m-d");
+//echo "Fecha actual: " . $fechaActual;
+//$estado = $_POST['estado'];
 
 // Validar que los parámetros no estén vacíos
-if(empty($idUsuario) || empty($idMedico) || empty($horario) || empty($fecha) || empty($estado)) {
+/*if(empty($idUsuario) || empty($idMedico) || empty($horario) || empty($fecha) || empty($estado)) {
     echo "Error: Faltan parámetros para la inserción.";
     exit;
-}
+}*/
 
 // Consulta para insertar la reserva
-$sql = "INSERT INTO reserva (estado, fecha, Usuario_idUsuario, Medico_idMedico, Horarios_idHorarios)
-        VALUES ('$estado', '$fecha', '$idUsuario', '$idMedico', 1)";
+$sql = "INSERT INTO reserva (idReserva, estado, fecha, horario, Usuario_idUsuario, Medico_idMedico)
+        VALUES (null, 'activo', '$fechaActual', '$horario','$idUsuario', '$idMedico')";
 
 if ($conexionBD->datos($sql)) {
     echo "Reserva insertada correctamente";

@@ -21,6 +21,8 @@ if($resultado->num_rows>0){
 
  <!-- <h1>Registro Medicos</h1> -->
         <form action="listamedicos.php" method="post">
+
+        <input type="hidden" name="idMedico" value="<?php echo $idMedico?>">
         <div class="modal-body">
               <div class="form-group">
                 <label for="">Nombre</label>
