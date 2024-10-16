@@ -66,7 +66,7 @@ include 'sidebarmenu.php';
 
                                 // Botones para editar y eliminar
                                 echo "<td>";
-                                  echo "<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarMed(2)'><i class='fas fa-edit'></i></button>";
+                                  echo "<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarMed($idMedico)'><i class='fas fa-edit'></i></button>";
                                   echo " ";
                                   echo "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#eliminarMed' onClick='eliminarMed($idMedico)'><i class='fas fa-trash'></i></button>";
                                 echo "</td>";
@@ -104,7 +104,7 @@ include 'sidebarmenu.php';
                               </div>
                               <div id="contenidoModalUpdateMedico">
                                   <div class="modal-body">
-                                    Body cargando...
+                                    Body cargando medicos...
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
