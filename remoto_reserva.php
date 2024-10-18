@@ -9,7 +9,7 @@ $idUsuario = $_POST['idUsuario'];
 $idMedico = $_POST['idMedico'];
 $horario = $_POST['horario']; // Asegúrate que esto es el idHorarios
 //$fecha = $_POST['fechaActual'];
-$fechaActual = date("Y-m-d");
+$fechaActual = date("Y-m-d");  //obtenemos en el servidor
 //echo "Fecha actual: " . $fechaActual;
 //$estado = $_POST['estado'];
 

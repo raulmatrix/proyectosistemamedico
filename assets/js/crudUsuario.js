@@ -39,7 +39,7 @@ function eliminar(idUsu){
 }
 
 
-
+/*
 
 function quitarMed(idMed){
   alert("Usuario: " + idMed)
@@ -47,5 +47,5 @@ function quitarMed(idMed){
   $.post("deleteMedico.php", {idMed: idMed}, function(result){
     window.location.href = "http://localhost:9191/sistemamedico/listamedicos.php";
   });
-}
+}*/
 
